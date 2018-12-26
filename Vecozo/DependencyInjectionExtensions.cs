@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Server.Kestrel.Https;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Vecozo.Certificate;
 using Vecozo.Connected_Services.ReturnInfoServices;
 using Vecozo.Connected_Services.Vecozo.IsAliveInterface;
 using Vecozo.Cov;
@@ -13,7 +15,12 @@ namespace Microsoft.Extensions.DependencyInjection
 	{
 		public static IServiceCollection AddVecozoSoapServices<TFile>(this IServiceCollection services) where TFile : class, IVecozoReturnInfoReceiver
 		{
-			//allow vecozo to authenticate with client certificate 
+			// Push
+			
+			// Return info services (vecozo Push) 
+			services.AddTransient<IAliveService, ReturnInfoServicesIsAlive>();
+			services.AddTransient<IReceiver, ReturnInfoService>();
+			// Allow vecozo to authenticate with client certificate 
 			services.Configure<HttpsConnectionAdapterOptions>(options =>
 			{
 				options.ClientCertificateMode = ClientCertificateMode.RequireCertificate;
@@ -21,19 +28,21 @@ namespace Microsoft.Extensions.DependencyInjection
 				options.ClientCertificateValidation = (certificate2, chain, policyErrors) => true; // accept any cert (testing purposes only)
 			});
 			services.AddTransient<IVecozoReturnInfoReceiver, TFile>();
-			//Soap client
+			services.TryAddTransient<IClientCertificateAuthorization, ClientCertificateAuthorization>();
+
+			// Pull
+
+			// Soap client
 			services.AddSoapClients();
-			//declaration clients
+			//Vecozo COV client
+			services.AddTransient<CovClient>();
+			// Declaration clients
 			services.AddTransient<DeclarationClient>();
-			//return info (pull vecozo)
+			// Return info (pull vecozo)
 			services.AddTransient<ReturnInfoClientFind>();
 			services.AddTransient<ReturnInfoClientFile>();
 			services.AddTransient<ReturnInfoClientPdfFile>();
-			//Return info services (vecozo Push) 
-			services.AddTransient<IAliveService, ReturnInfoServicesIsAlive>();
-			services.AddTransient<IReceiver, ReturnInfoService>();
-			//Vecozo COV client
-			services.AddTransient<CovClient>();
+
 			return services;
 		}
 	}
