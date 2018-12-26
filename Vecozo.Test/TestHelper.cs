@@ -1,7 +1,7 @@
 using System;
 using System.IO;
-// ReSharper disable IdentifierTypo
 
+// ReSharper disable IdentifierTypo
 // ReSharper disable StringLiteralTypo
 
 namespace Vecozo.Test

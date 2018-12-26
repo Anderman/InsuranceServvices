@@ -8,6 +8,7 @@ using Vecozo.Connected_Services.ReturnInfoClients;
 using Vecozo.DeclarationClients;
 using Vecozo.ReturnInfoClients;
 using Xunit;
+
 // ReSharper disable StringLiteralTypo
 // ReSharper disable IdentifierTypo
 

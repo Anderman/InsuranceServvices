@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Vecozo.Connected_Services.ReturnInfoServices;
 using Vecozo.Connected_Services.Vecozo.IsAliveInterface;
+using Vecozo.Cov;
 using Vecozo.DeclarationClients;
 using Vecozo.ReturnInfoClients;
 using Vecozo.ReturnInfoServices;
@@ -8,7 +9,7 @@ using Vecozo.ReturnInfoServices;
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
-	public static class VecozoServiceCollectionExtensions
+	public static class DependencyInjectionExtensions
 	{
 		public static IServiceCollection AddVecozoSoapServices<TFile>(this IServiceCollection services) where TFile : class, IVecozoReturnInfoReceiver
 		{
@@ -31,6 +32,8 @@ namespace Microsoft.Extensions.DependencyInjection
 			//Return info services (vecozo Push) 
 			services.AddTransient<IAliveService, ReturnInfoServicesIsAlive>();
 			services.AddTransient<IReceiver, ReturnInfoService>();
+			//Vecozo COV client
+			services.AddTransient<CovClient>();
 			return services;
 		}
 	}
