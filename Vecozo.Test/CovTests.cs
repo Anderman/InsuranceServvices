@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Debug;
 using SoapCore.SoapClient;
 using Vecozo.Connected_Services.CovClients.Request;
@@ -17,7 +18,7 @@ namespace Vecozo.Test
 		private static SoapClient<T1, T2, T3> GetVecozoClient<T1, T2, T3>() where T1 : ISoapConfig, new() where T2 : class where T3 : class, new()
 		{
 			var hostingEnvironment = new HostingEnvironment { EnvironmentName = "Development" };
-			var vecozoHttpClient = new SoapClient<T1, T2, T3>(hostingEnvironment, new DebugLogger("test"), new CertificateProviderTest());
+			var vecozoHttpClient = new SoapClient<T1, T2, T3>(hostingEnvironment, new NullLogger<SoapClient<T1, T2, T3>>(),  new CertificateProviderTest());
 			return vecozoHttpClient;
 		}
 
