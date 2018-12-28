@@ -27,7 +27,7 @@ namespace Vecozo.Cov
 
 		public async Task<Zoekresultaat> Check(int bsn, DateTime dateOfBirth, DateTime refDate)
 		{
-			var request = new Request { Zoekopdrachten = new[] { new Zoekopdracht { Bsn = bsn.ToString(), Geboortedatum = dateOfBirth, Volgnummer = 1, Peildatum = refDate } } };
+			var request = new Request { Zoekopdrachten = new[] { new Zoekopdracht { Bsn = bsn.ToString("D9"), Geboortedatum = dateOfBirth, Volgnummer = 1, Peildatum = refDate } } };
 
 			var results = await _client.PostAsync(request);
 			if (results.Resultaat != RetourberichtresultaatType.VerzoekAkkoord.ToString())
