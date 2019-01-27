@@ -16,12 +16,16 @@ namespace Vecozo.Connected_Services.ReturnInfoClients
 {
 	public class OpvragenTeVerwerkenRetourInformatieRequest : object
 	{
+		[XmlElement(Namespace = "urn:www-vecozo-nl:messages:vsp:edp:declareren:downloaden:v1")]
 		public long? DeclaratieId { get; set; }
 
+		[XmlElement(Namespace = "urn:www-vecozo-nl:messages:vsp:edp:declareren:downloaden:v1")]
 		public ArrayOfEIStandaardZoekCriteria EIStandaarden { get; set; }
 
+		[XmlElement(Namespace = "urn:www-vecozo-nl:messages:vsp:edp:declareren:downloaden:v1")]
 		public long? LaatstOntvangenRetourbestandId { get; set; }
 
+		[XmlElement(Namespace = "urn:www-vecozo-nl:messages:vsp:edp:declareren:downloaden:v1")]
 		public bool? NegeerPdfIds { get; set; }
 	}
 
