@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using SoapCore.SoapClient;
 using Vecozo.Connected_Services.ReturnInfoClients;
+// ReSharper disable CommentTypo
 
 // ReSharper disable StringLiteralTypo
 
@@ -37,12 +38,17 @@ namespace Vecozo.ReturnInfoClients
 			return result.Resultaten;
 		}
 
+		/// <summary>
+		/// Hiermee kan de bijlage gevonden worden die bij een retour bericht hoort van een declaratie
+		/// Als vecozo al / nog de bijlage heeft dan zal het resultaat gevuld zijn.
+		/// </summary>
+		/// <param name="declarationId"></param>
+		/// <returns></returns>
 		public async Task<Declaratie[]> FindByDeclarationId(long declarationId)
 		{
 			var request = new OpvragenTeVerwerkenRetourInformatieRequest { DeclaratieId = declarationId };
 
 			var result = await _client.PostAsync(request);
-			result.Resultaatcode.EnsureSuccess();
 			return result.Resultaten;
 		}
 
