@@ -89,15 +89,7 @@ namespace Vecozo.Connected_Services.ReturnInfoClients
 		AfgehandeldDoorZorgverzekeraar = 5
 	}
 
-	public class ArrayOfEIRetourbestanden : List<EIRetourbestandDetail>
-	{
-	}
-
-	public class ArrayOfPdfRetourbestanden : List<PdfRetourbestandDetail>
-	{
-	}
-
-	public class EIRetourbestandDetail 
+	public class EIRetourbestandDetail
 	{
 		public long RetourbestandId { get; set; }
 		public EIStandaard EIStandaard { get; set; }
@@ -105,7 +97,7 @@ namespace Vecozo.Connected_Services.ReturnInfoClients
 		public DateTime IngediendOp { get; set; }
 	}
 
-	public class EIStandaard 
+	public class EIStandaard
 	{
 		public short StandaardCEI { get; set; }
 		public string StandaardCode { get; set; }
@@ -113,7 +105,7 @@ namespace Vecozo.Connected_Services.ReturnInfoClients
 		public short StandaardSubVersie { get; set; }
 	}
 
-	public class PdfRetourbestandDetail 
+	public class PdfRetourbestandDetail
 	{
 		public long PdfId { get; set; }
 	}
