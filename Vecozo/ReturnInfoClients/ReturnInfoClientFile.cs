@@ -2,6 +2,8 @@
 using SoapCore.SoapClient;
 using Vecozo.Connected_Services.ReturnInfoClients;
 
+// ReSharper disable CommentTypo
+
 namespace Vecozo.ReturnInfoClients
 {
 	public class ReturnInfoClientFile
@@ -22,6 +24,13 @@ namespace Vecozo.ReturnInfoClients
 			return result.EIRetourbestand.Bestand.Data;
 		}
 
+
+		/// <summary>
+		///     Het ophalen van een retour bestand van een specifieke declaratie
+		///     <exception cref="VecozoException">Als er geen bestand kan worden opgehaalt</exception>
+		/// </summary>
+		/// <param name="declarationId">Dit is een ID gegeneerd door Vecozo voor iedere declaratie</param>
+		/// <returns></returns>
 		public async Task<byte[]> DownloadByDeclarationId(long declarationId)
 		{
 			var request = new DownloadRequest { DeclaratieId = declarationId };
@@ -29,6 +38,19 @@ namespace Vecozo.ReturnInfoClients
 			var result = await _client.PostAsync(request);
 			result.Resultaatcode.EnsureSuccess();
 			return result.EIRetourbestand.Bestand.Data;
+		}
+
+		/// <summary>
+		///     Probeert het retour bestand op te halen als deze al/nog beschikbaar is.
+		/// </summary>
+		/// <param name="declarationId">Dit is een ID gegeneerd door Vecozo voor iedere declaratie</param>
+		/// <returns></returns>
+		public async Task<byte[]> TryDownloadByDeclarationId(long declarationId)
+		{
+			var request = new DownloadRequest { DeclaratieId = declarationId };
+
+			var result = await _client.PostAsync(request);
+			return result.EIRetourbestand?.Bestand?.Data;
 		}
 
 		public class Config : ReturnInfoConfig

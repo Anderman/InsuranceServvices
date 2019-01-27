@@ -15,6 +15,17 @@ namespace Vecozo.ReturnInfoClients
 			_client = client;
 		}
 
+		/// <summary>
+		/// Opvragen van nog niet opgevraagde bestanden. Het resultaat geeft ids terug voor het ophalen van retour-pdf bestanden
+		/// Om dit te kunnen koppelen aan de declaratie moet je zorgen dat je het declaratieId hebt opgeslagen bij de declaratie.
+		/// Dit declaratie krijg je bij het indienen van een declaratie.
+		/// Deze interface zou je kunnen gebruiken voor het bepalen welke bestanden er klaar staan.
+		/// Je zou bestanden met een declaratieId kunnen opvragen om direct te downloaden. 
+		/// </summary>
+		/// <param name="eiCode"></param>
+		/// <param name="version"></param>
+		/// <param name="subversion"></param>
+		/// <returns></returns>
 		public async Task<Declaratie[]> FindByDeclarationVersion(string eiCode, short version, short? subversion)
 		{
 			var search = new EIStandaardZoekCriteria { StandaardCode = eiCode, StandaardVersie = version, StandaardSubVersie = subversion };
