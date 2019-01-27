@@ -53,9 +53,11 @@ namespace Vecozo.Connected_Services.ReturnInfoClients
 
 		public DeclaratieStatus DeclaratieStatus { get; set; }
 
-		public ArrayOfEIRetourbestanden Retourbestanden { get; set; }
+		[XmlArrayItem("Retourbestand", IsNullable = false)]
+		public EIRetourbestandDetail[] Retourbestanden { get; set; }
 
-		public ArrayOfPdfRetourbestanden PdfBestanden { get; set; }
+		[XmlArrayItem("PdfBestand", IsNullable = false)]
+		public PdfRetourbestandDetail[] PdfBestanden { get; set; }
 	}
 
 	public enum Resultaatcode
@@ -95,7 +97,7 @@ namespace Vecozo.Connected_Services.ReturnInfoClients
 	{
 	}
 
-	public class EIRetourbestandDetail : object
+	public class EIRetourbestandDetail 
 	{
 		public long RetourbestandId { get; set; }
 		public EIStandaard EIStandaard { get; set; }
@@ -103,7 +105,7 @@ namespace Vecozo.Connected_Services.ReturnInfoClients
 		public DateTime IngediendOp { get; set; }
 	}
 
-	public class EIStandaard : object
+	public class EIStandaard 
 	{
 		public short StandaardCEI { get; set; }
 		public string StandaardCode { get; set; }
@@ -111,7 +113,7 @@ namespace Vecozo.Connected_Services.ReturnInfoClients
 		public short StandaardSubVersie { get; set; }
 	}
 
-	public class PdfRetourbestandDetail : object
+	public class PdfRetourbestandDetail 
 	{
 		public long PdfId { get; set; }
 	}
