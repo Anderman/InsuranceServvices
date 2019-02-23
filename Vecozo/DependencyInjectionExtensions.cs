@@ -17,7 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
 		public static IServiceCollection AddVecozoSoapServices<TFile>(this IServiceCollection services) where TFile : class, IVecozoReturnInfoReceiver
 		{
 			// Push
-			
+
 			// Return info services (vecozo Push) 
 			services.AddTransient<IAliveService, ReturnInfoServicesIsAlive>();
 			services.AddTransient<IReceiver, ReturnInfoService>();
@@ -37,6 +37,7 @@ namespace Microsoft.Extensions.DependencyInjection
 			services.AddSoapClients();
 			//Vecozo COV client
 			services.AddTransient<CovClient>();
+			services.AddTransient(typeof(CovClient<IVecozoEnvironment>));
 			// Declaration clients
 			services.AddTransient<DeclarationClient>();
 			// Return info (pull vecozo)
