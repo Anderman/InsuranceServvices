@@ -5,6 +5,7 @@ using Vecozo.Connected_Services.ReturnInfoServices;
 using Vecozo.Connected_Services.Vecozo.IsAliveInterface;
 using Vecozo.Cov;
 using Vecozo.DeclarationClients;
+using Vecozo.Infrastructure;
 using Vecozo.ReturnInfoClients;
 using Vecozo.ReturnInfoServices;
 
@@ -42,6 +43,9 @@ namespace Microsoft.Extensions.DependencyInjection
 			services.AddTransient<ReturnInfoClientFind>();
 			services.AddTransient<ReturnInfoClientFile>();
 			services.AddTransient<ReturnInfoClientPdfFile>();
+			services.AddTransient<VecozoEnvironmentTest>();
+			services.AddTransient<VecozoEnvironmentAcceptance>();
+			services.AddTransient<VecozoEnvironmentProduction>();
 
 			return services;
 		}
