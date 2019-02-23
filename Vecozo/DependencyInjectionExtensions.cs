@@ -43,9 +43,9 @@ namespace Microsoft.Extensions.DependencyInjection
 			services.AddTransient<ReturnInfoClientFind>();
 			services.AddTransient<ReturnInfoClientFile>();
 			services.AddTransient<ReturnInfoClientPdfFile>();
-			services.AddTransient<VecozoEnvironmentTest>();
-			services.AddTransient<VecozoEnvironmentAcceptance>();
-			services.AddTransient<VecozoEnvironmentProduction>();
+			services.AddSingleton<VecozoEnvironmentTest>();
+			services.AddSingleton<VecozoEnvironmentAcceptance>();
+			services.AddSingleton<VecozoEnvironmentProduction>();
 
 			return services;
 		}
