@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using SoapCore.SoapClient;
 using Vecozo.Connected_Services.DeclarationClients;
+using Vecozo.Infrastructure;
 
 // ReSharper disable StringLiteralTypo
 

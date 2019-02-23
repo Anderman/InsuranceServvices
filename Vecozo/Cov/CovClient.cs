@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using SoapCore.SoapClient;
 using Vecozo.Connected_Services.CovClients.Request;
 using Vecozo.Connected_Services.CovClients.Response;
+using Vecozo.Infrastructure;
 
 // ReSharper disable IdentifierTypo
 
@@ -11,6 +12,15 @@ using Vecozo.Connected_Services.CovClients.Response;
 
 namespace Vecozo.Cov
 {
+	public class CovClient<T> : CovClient where T : IVecozoEnvironment
+	{
+		public CovClient(SoapClient<Config, Request, ControleerResponse> client, T env) : base(client)
+		{
+			client.Url = $"https://{env.Environment.ToEnvironmentString()}covwebservice.vecozo.nl/v1/VZ801802.svc";
+		}
+	}
+
+
 	public class CovClient
 	{
 		private readonly SoapClient<Config, Request, ControleerResponse> _client;
@@ -19,6 +29,7 @@ namespace Vecozo.Cov
 		{
 			_client = client;
 		}
+
 
 		public async Task<Zoekresultaat> Check(int bsn, DateTime dateOfBirth)
 		{

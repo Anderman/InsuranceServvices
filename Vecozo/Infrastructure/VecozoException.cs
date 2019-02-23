@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Vecozo
+namespace Vecozo.Infrastructure
 {
 	public sealed class VecozoException : Exception
 	{

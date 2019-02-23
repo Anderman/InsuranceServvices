@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using SoapCore.SoapClient;
 using Vecozo.Connected_Services.ReturnInfoClients;
+using Vecozo.Infrastructure;
 
 // ReSharper disable CommentTypo
 

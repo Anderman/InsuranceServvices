@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Vecozo.Connected_Services.DeclarationClients;
+using Vecozo.Infrastructure;
 
 namespace Vecozo.DeclarationClients
 {

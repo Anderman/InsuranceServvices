@@ -7,6 +7,7 @@ using SoapCore.SoapClient;
 using Vecozo.Connected_Services.DeclarationClients;
 using Vecozo.Connected_Services.ReturnInfoClients;
 using Vecozo.DeclarationClients;
+using Vecozo.Infrastructure;
 using Vecozo.ReturnInfoClients;
 using Xunit;
 

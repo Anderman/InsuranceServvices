@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using SoapCore.SoapClient;
+using Vecozo.Infrastructure;
 
 // ReSharper disable StringLiteralTypo
 

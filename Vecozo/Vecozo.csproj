@@ -10,11 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Medella.SoapCore" Version="1.0.26" />
+    <PackageReference Include="Medella.SoapCore" Version="1.0.29" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Https" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.TestPlatform.PlatformAbstractions">
+      <HintPath>..\..\..\Users\tkies\.nuget\packages\microsoft.testplatform.objectmodel\15.9.0\lib\netstandard1.5\Microsoft.TestPlatform.PlatformAbstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
