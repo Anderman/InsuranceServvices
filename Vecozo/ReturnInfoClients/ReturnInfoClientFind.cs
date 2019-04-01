@@ -46,7 +46,14 @@ namespace Vecozo.ReturnInfoClients
 		/// <returns></returns>
 		public async Task<Declaratie[]> FindByDeclarationId(long? declarationId)
 		{
-			var request = new OpvragenTeVerwerkenRetourInformatieRequest { DeclaratieId = declarationId };
+			var request = new OpvragenTeVerwerkenRetourInformatieRequest { DeclaratieId = declarationId, NegeerPdfIds = true };
+
+			var result = await _client.PostAsync(request);
+			return result.Resultaten;
+		}
+		public async Task<Declaratie[]> FindInclusivePdfByDeclarationId(long? declarationId)
+		{
+			var request = new OpvragenTeVerwerkenRetourInformatieRequest { DeclaratieId = declarationId, NegeerPdfIds = false, };
 
 			var result = await _client.PostAsync(request);
 			return result.Resultaten;
