@@ -38,6 +38,9 @@ namespace Microsoft.Extensions.DependencyInjection
 			//Vecozo COV client
 			services.AddTransient<CovClient>();
 			services.AddTransient(typeof(CovClient<IVecozoEnvironment>));
+			services.AddTransient(typeof(CovClient<VecozoEnvironmentTest>));
+			services.AddTransient(typeof(CovClient<VecozoEnvironmentAcceptance>));
+			services.AddTransient(typeof(CovClient<VecozoEnvironmentProduction>));
 			// Declaration clients
 			services.AddTransient<DeclarationClient>();
 			// Return info (pull vecozo)

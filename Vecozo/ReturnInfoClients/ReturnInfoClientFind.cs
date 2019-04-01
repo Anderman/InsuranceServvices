@@ -44,7 +44,7 @@ namespace Vecozo.ReturnInfoClients
 		/// </summary>
 		/// <param name="declarationId"></param>
 		/// <returns></returns>
-		public async Task<Declaratie[]> FindByDeclarationId(long declarationId)
+		public async Task<Declaratie[]> FindByDeclarationId(long? declarationId)
 		{
 			var request = new OpvragenTeVerwerkenRetourInformatieRequest { DeclaratieId = declarationId };
 
